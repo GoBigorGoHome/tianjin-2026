@@ -17,7 +17,7 @@ $\DeclareMathOperator{\rotr}{rotr}$
 
 
 
-![bg right:30%](um_nik)
+![bg right:30%](um_nik.png)
 
 # 二分查找
 
