@@ -1,0 +1,11 @@
+{
+  "packageManager": "pnpm@11.18.0",
+  "scripts": {
+    "build": "node build.js",
+    "preview": "wrangler pages dev dist"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.3.0",
+    "wrangler": "^4.73.0"
+  }
+}

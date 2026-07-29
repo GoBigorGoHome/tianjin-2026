@@ -1,0 +1,9 @@
+dist/
+tests/
+*.zip
+.wrangler/
+node_modules/
+.cph/
+*.autosave.ipe
+**/题目/*/*
+!**/题目/*/*.*
