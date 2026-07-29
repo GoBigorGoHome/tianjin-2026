@@ -1,2 +1,6 @@
 packages:
   - 'lec*'
+
+allowBuilds:
+  esbuild: true
+  workerd: true
