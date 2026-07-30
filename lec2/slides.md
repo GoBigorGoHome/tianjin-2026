@@ -174,19 +174,19 @@ long long binary_search(F check, long long ok, long long ng) {
 
 # std::lower_bound
 
-设 [b, e) 是元素从小到大排好序的范围。lower_bound(b, e, x) 返回指向 [b, e) 内第一个**不小于** x 的元素的指针（或迭代器），若不存在这样的元素则返回 e。
+设 [b, e) 是元素从小到大排好序的范围。lower_bound(b, e, v) 返回指向 [b, e) 内第一个**不小于** v 的元素的指针（或迭代器），若不存在这样的元素则返回 e。
 
 ---
 
 # 用二分查找来实现 lower_bound()
 
 ```cpp
-lower_bound(int* b, int *e, int x) {
+lower_bound(int* b, int *e, int v) {
     while (b != e) {
         int *m = b + (e - b) / 2;
-        if (*m < x)
+        if (*m < v)
             b = m + 1;
-        else // !(*m < x)
+        else // !(*m < v)
             e = m;
     }
     return e;
@@ -197,19 +197,19 @@ lower_bound(int* b, int *e, int x) {
 
 # std::upper_bound
 
-设 [b, e) 是元素从小到大排好序的范围。upper_bound(b, e, x) 返回指向 [b, e) 内第一个**大于** x 的元素的指针（或迭代器），若不存在这样的元素则返回 e。
+设 [b, e) 是元素从小到大排好序的范围。upper_bound(b, e, v) 返回指向 [b, e) 内第一个**大于** v 的元素的指针（或迭代器），若不存在这样的元素则返回 e。
 
 ---
 
 # 用二分查找来实现 upper_bound()
 
 ```cpp
-lower_bound(int* b, int *e, int x) {
+lower_bound(int* b, int *e, int v) {
     while (b != e) {
         int *m = b + (e - b) / 2;
-        if (x < *m)
+        if (v < *m)
             e = m;
-        else // !(x < *m)
+        else // !(v < *m)
             b = m + 1;
     }
     return e;
@@ -320,7 +320,7 @@ $[1,5]$ 和 $[3,7]$ 相交，$[7,8]$ 和 $[3,7]$ 相交。
 
 这题有多种解法。我们介绍一个简便思路。
 
-两个区间相交的情况有点多。（其实也不多）
+两个区间相交的情况有点多。
 
 考虑不相交的区间有多少对。
 
@@ -749,28 +749,12 @@ int main() {
 
 ---
 
-# 我来推式子
 
-设第一种花束做 $m$ 个，第二种花束做 $n$ 个，那么需要 $mx + n$ 支红花和 $m + ny$ 支蓝花。我们需要判断在下列约束下 $m + n = K$ 能否成立。
-- $mx + n  \le R$
-- $m + ny \le B$
-- $m \ge 0$，$n \ge 0$，$m, n$ 是整数
+- 要做 $K$ 个花束，拿来 $K$ 个盒子，每个盒子里先放一支红花和一只蓝花。此时剩下 $R-K$ 支红花和 $B - K$ 支蓝花。
+- 每个盒子再放入 $x-1$ 支红花或 $y-1$ 支蓝花就满了。
+- 剩下红花能填满 $\floor{{R-K\over x-1}}$ 个盒子。剩下的蓝花能填满 $\floor{{R-K\over x-1}}$ 个盒子。
 
-把 $mx + n \le R$ 写成 $m(x - 1) + (m + n) \le R$，即 $m(x - 1) + k \le R$。
-所以 $m \le (R - K) / (x - 1)$。 
-
-同理可得 $n \le (B - K) / (y - 1)$。
-
-于是可知，只要判断是否有 $\lfloor {R-K\over x - 1} \rfloor + \lfloor {B - K \over y - 1} \rfloor \ge K$。
-
----
-
-# 其实上面的推导是在知道结果以后写出来的
-
-要得到 $\lfloor {R-K\over x - 1} \rfloor + \lfloor {B - K \over y - 1} \rfloor \ge K$ 这个条件，更自然的想法是
-
-- 要做 $K$ 个花束，拿来 $K$ 个盒子，每个盒子里先放一支红花和一只蓝花。
-剩下的红花只有做第一种花束才用得着，剩下的蓝花只有做第二种花束才用得着。
+- $K$ 个盒子都能被填满相当于 $\lfloor {R-K\over x - 1} \rfloor + \lfloor {B - K \over y - 1} \rfloor \ge K$。
 
 
 ---
@@ -809,12 +793,6 @@ cout << binary_search(check, 0, min(R, B)) << '\n';
 
 - $2 \leq N \leq 10^5$
 - $1 \leq A_i \leq 10^{9}$
-
-
----
-
-# 思考一下（10 分钟）
-
 
 
 ---
@@ -985,11 +963,6 @@ void solve() {
 - $1 \le a_i, b_i \le 10^{18}$
 
 
----
-
-# 思考一下（10 分钟）
-
-
 
 ---
 
@@ -1019,9 +992,9 @@ void solve() {
 
 # 提示 2
 
-- 考虑初始位置最考左的那个（3 类）机器人，如果它左边有垃圾，一定由它负责；否则它就一直向由走。
+- 考虑初始位置最靠左的那个（3 类）机器人，如果它左边有垃圾，一定由它负责；否则它就一直向右走。
 
-- 在它左边有垃圾的情况下，它是先向左走还是先向右走好？
+- 在它左边有垃圾的情况下，它是先向左走还是先向右走更好？
 
 - 这要看怎样走覆盖的范围更大。
 
@@ -1118,12 +1091,6 @@ auto check = [&](ll x) -> bool {
 - $0 ≤ |c_i| ≤ 10^9$
 - 保证存在方案能在 $10^9$ 天内完成任务。
 
-
----
-
-# 思考一下（10 分钟）
-
-> 这题并不难。
 
 ---
 
