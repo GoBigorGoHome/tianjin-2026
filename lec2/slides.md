@@ -67,7 +67,6 @@ Stop learning useless algorithms, go and solve some problems, learn how to use b
 
 解释：答案有 $N-1$ 种可能。每次询问的结果有 $2$ 种可能，$k$ 次询问的结果有 $2^k$ 种可能。必须要有 $2^k \ge N - 1$ 才能凭询问结果**区别** $N-1$ 种情况。
 
-> 这个解释逻辑严密吗？
 
 ---
 
