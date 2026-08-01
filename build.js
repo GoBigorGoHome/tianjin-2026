@@ -33,6 +33,21 @@ function hasFileChanged(filePath) {
   }
 }
 
+function copyDirRecursive(src, dest) {
+  if (!fs.existsSync(src)) return;
+  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+
+  fs.readdirSync(src).forEach(file => {
+    const srcPath = path.join(src, file);
+    const destPath = path.join(dest, file);
+    if (fs.statSync(srcPath).isDirectory()) {
+      copyDirRecursive(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
+}
+
 function copyImagesRecursive(src, dest, filter) {
   if (!fs.existsSync(src)) return;
   
@@ -92,6 +107,13 @@ const cssChanged = (() => {
 
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir);
+}
+
+// Copy root fonts folder to dist/fonts
+const rootFontsDir = path.join(__dirname, 'fonts');
+const distFontsDir = path.join(distDir, 'fonts');
+if (fs.existsSync(rootFontsDir)) {
+  copyDirRecursive(rootFontsDir, distFontsDir);
 }
 
 const folders = getFolders();
