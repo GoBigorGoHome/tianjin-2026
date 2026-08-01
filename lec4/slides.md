@@ -535,7 +535,7 @@ int solve() {
 - $1 \leq T \leq 20$；
 - $1 \leq N, M \leq 10^5$，$1 \leq L \leq 10^6$，$1 \leq V \leq 10^3$；
 - $0 \leq D_i < L$，$1 \leq v_i \leq 10^3$，$|A_i| \leq 10^3$；
-- $0 \leq P_1 < P_2 < \dots < P_m \leq L$。
+- $0 \leq P_1 < P_2 < \dots < P_M \leq L$。
 
 ---
 
