@@ -403,7 +403,7 @@ void add(int x, int l, int r, int ql, int qr, int v) {
     }
     int m = (l + r) / 2;
     add(x * 2, l, m, ql, qr, v);
-    add(x * 2, m + 1, r, ql, qr, v);
+    add(x * 2 + 1, m + 1, r, ql, qr, v);
 }
 ```
 
