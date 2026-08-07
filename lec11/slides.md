@@ -399,6 +399,7 @@ int main() {
 - $2 \le n \le 10^4$
 - $1 \le m \le 2\times 10^4$
 - $1 \le k \le 100$
+- $0 \le a_i \le 10^6$
 
 ---
 
@@ -407,18 +408,37 @@ int main() {
 如果在所有道路都开放之后进入景区，那么问题化为在一个有 $nk$ 个点和 $mk$ 条边的有向图上求最短路。
 
 样例：$n = 5, m = 5, k = 3$
-![h:250](bus-sample.svg)   ![h:460](bus-sample-2.svg)
+<div class=col73>
+<div>
+
+![h:200](bus-sample.svg)   
+
+如果在时刻 $3$ 以后进入景区，问题化为在右图上求 $(1,0)$ 到 $(5,0)$ 的最短路。若有解，答案不超过
+$$
+\begin{aligned}
+\lceil \max(a_i) / k\rceil k + (n-1)k &< \max(a_i) + k + (n-1)k\\
+&= \max(a_i) + nk \le 2\times 10^6.
+\end{aligned}
+$$
+
+</div>
+
+<div>
+
+![h:400](bus-sample-2.svg)
+
+</div>
+<div>
 
 ---
 
 # 解法
 
 从 $0$ 时刻开始，沿着时间轴一秒一秒推进（设一单位时间是一秒）。
-对于每个时刻 $t = 0, 1, \dots, \lceil(\max a_i) /k\rceil k + nk-1$，令 $V_t$ 为可能在 $t$ 时刻到达的点的列表。
+对每个时刻 $t = 0, 1, \dots, \max a_i + nk-1$，令 $V_t$ 为可能在 $t$ 时刻到达的点的列表。
 
 在上述有 $nk$ 个点和 $mk$ 条边的有向图上进行（特殊的）BFS，在 BFS 扩展的过程中填充诸列表 $V_t$。
 
-注意到 $\lceil(\max a_i) /k\rceil k \le (\max a_i) + k - 1$。
 
 ---
 
