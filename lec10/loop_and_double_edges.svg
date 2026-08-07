@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="24" viewBox="0 0 77 24">
+<path fill-rule="evenodd" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 11.800781 21 C 11.800781 18.601562 8.199219 18.601562 8.199219 21 C 8.199219 23.398438 11.800781 23.398438 11.800781 21 Z M 11.800781 21 "/>
+<path fill="none" stroke-width="0.4" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 96 512 C 80 528 88 532 96 532 C 104 532 112 528 96 512 " transform="matrix(1, 0, 0, -1, -86, 533)"/>
+<path fill-rule="evenodd" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 43.800781 13 C 43.800781 10.601562 40.199219 10.601562 40.199219 13 C 40.199219 15.398438 43.800781 15.398438 43.800781 13 Z M 43.800781 13 "/>
+<path fill-rule="evenodd" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 75.800781 13 C 75.800781 10.601562 72.199219 10.601562 72.199219 13 C 72.199219 15.398438 75.800781 15.398438 75.800781 13 Z M 75.800781 13 "/>
+<path fill="none" stroke-width="0.4" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 128 520 C 138.667969 533.332031 149.332031 533.332031 160 520 " transform="matrix(1, 0, 0, -1, -86, 533)"/>
+<path fill="none" stroke-width="0.4" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 128 520 C 138.667969 506.667969 149.332031 506.667969 160 520 " transform="matrix(1, 0, 0, -1, -86, 533)"/>
+</svg>
