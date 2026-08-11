@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54" height="22" viewBox="0 0 54 22">
+<path fill-rule="evenodd" fill="rgb(100%, 0%, 0%)" fill-opacity="1" d="M 4.800781 3 C 4.800781 0.601563 1.199219 0.601563 1.199219 3 C 1.199219 5.398438 4.800781 5.398438 4.800781 3 Z M 4.800781 3 "/>
+<path fill-rule="evenodd" fill="rgb(100%, 0%, 0%)" fill-opacity="1" d="M 52.800781 3 C 52.800781 0.601563 49.199219 0.601563 49.199219 3 C 49.199219 5.398438 52.800781 5.398438 52.800781 3 Z M 52.800781 3 "/>
+<path fill-rule="evenodd" fill="rgb(0%, 0%, 100%)" fill-opacity="1" d="M 4.800781 19 C 4.800781 16.601563 1.199219 16.601563 1.199219 19 C 1.199219 21.398438 4.800781 21.398438 4.800781 19 Z M 4.800781 19 "/>
+<path fill-rule="evenodd" fill="rgb(0%, 0%, 100%)" fill-opacity="1" d="M 52.800781 19 C 52.800781 16.601563 49.199219 16.601563 49.199219 19 C 49.199219 21.398438 52.800781 21.398438 52.800781 19 Z M 52.800781 19 "/>
+<path fill="none" stroke-width="0.4" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(100%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 160 496 L 208 496 " transform="matrix(1, 0, 0, -1, -157, 499)"/>
+<path fill="none" stroke-width="0.4" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(0%, 0%, 100%)" stroke-opacity="1" stroke-miterlimit="10" d="M 160 480 L 208 480 " transform="matrix(1, 0, 0, -1, -157, 499)"/>
+</svg>
