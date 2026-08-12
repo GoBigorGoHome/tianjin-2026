@@ -3,7 +3,7 @@ marp: true
 math: mathjax
 paginate: true
 theme: lecture
-title: 无向图上的深度优先搜索
+title: 无向图的连通性
 ---
 
 # 无向图上的深度优先搜索
