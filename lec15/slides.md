@@ -192,12 +192,13 @@ vector<int> g[maxn];
 int vis[maxn];
 vector<int> p;
 bool dfs(int u) {
-  if (vis[u] == -1) return false;
-  if (vis[u] == 1) return true;
+  if (vis[u]) return vis[u] == 1;
   vis[u] = -1;
   for (int v : g[u])
     dfs(v);
+  vis[u] = 1;
   p.push_back(u);
+  return true;
 }
 
 void topo(int n) {
