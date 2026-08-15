@@ -630,9 +630,9 @@ vector<int> z_array(string x) {
 
 <v-clicks>
 
-- 根据前一页的分析，只有 `z[i - l] == r - i` 时，第 9 行 `z[i]++` 才可能执行。  
+- 根据前一页的分析，只有 `z[i - l] == r - i` 时，第 8 行 `z[i]++` 才可能执行。  
 - 此时 `z[i]` 的初始值是 `r - i`，所以 `z[i]++` 执行多少次，`r` 就增大多少。
-- 最初 `r == 0`，又 `r` 始终不超过 `n`，所以第 9 行 `z[i]++` 执行至多 `n` 次。
+- 最初 `r == 0`，又 `r` 始终不超过 `n`，所以第 8 行 `z[i]++` 执行至多 `n` 次。
 
 我们可以在 $O(n)$ 时间内计算一个长为 $n$ 的字符串的 Z 数组。
 </v-clicks>
@@ -740,16 +740,14 @@ $
 </div>
 
 - 注意到 $a[i] \le a[i - 1] + 1$。
-- 如果 $t[i] = p[a[i-1] + 1]$ 那么 $a[i] = a[i - 1] + 1$。
-- 否则如果 $a[i] > 0$ 那么 $p[1..a[i] - 1]$ 是 $p[1..a[i - 1]]$ 的一个后缀，  
-也就是说 $p[1..a[i] - 1]$ 是 $p[1..a[i - 1]]$ 的一个 border。  
-  - 借助 $p$ 的 border 数组，我们可以从大到小枚举 $p[1..a[i] - 1]$ 的每个 border 的长度 $k$，检查是否有 $p[k+1] = p[i]$。
-
----
-
-上面讲的用 border 数组进行字符串匹配的算法，我们称之为 **KMP 算法**。
+- 如果 $T[i] = P[a[i-1] + 1]$ 那么 $a[i] = a[i - 1] + 1$。
+- 否则如果 $a[i] > 0$ 那么 $P[1..a[i] - 1]$ 是 $P[1..a[i - 1]]$ 的一个后缀，  
+也就是说 $P[1..a[i] - 1]$ 是 $P[1..a[i - 1]]$ 的一个 border。  
+  - 借助 $P$ 的 border 数组，我们可以从大到小枚举 $P[1..a[i-1]]$ 的每个 border 的长度 $k$，检查是否有 $P[k+1] = T[i]$。
 
 <div class=remark v-click>
+
+这个用 border 数组进行字符串匹配的算法，就是 **KMP 算法**。
 
 KMP 是 Knuth，Morris，Pratt 三个姓的缩写。
 
@@ -1009,9 +1007,9 @@ vector<int> palindrome_radius(string s) {
   int n = s.size();
   vector<int> rad(2 * n - 1);
   for (int i = 0; i < 2 * n - 1; i++) {
+    int k = 0;
     int p = i / 2;
     int q = (i + 1) / 2;
-    int k = 0;
     while (0 <= q - k - 1 && p + k + 1 < n && s[q - k - 1] == s[p + k + 1]) {
       k++;
     }
@@ -1073,22 +1071,24 @@ vector<int> palindrome_radius(string s) {
 ---
 
 
-```cpp {all|8}
+```cpp {all|9-13}
 vector<int> manacher(string s) {
   int n = s.size();
   vector<int> rad(2 * n - 1);
   int l = 0, r = 0; // l r 是目前找到的右端点最大的回文子串的左右端点
   for (int i = 0; i < 2 * n - 1; i++) {
+    // 2 * r 是字符 s[r] 所在的位置作为回文中心的编号
+    // i / 2 是从回文中心 i 向左第一个字符的下标
+    int k = (2 * r <= i ? 0 : min(r - i / 2, rad[2 * (l + r) - i]));
     int p = i / 2;
     int q = (i + 1) / 2; 
-    int k = (r <= p ? 0 : min(r - p, rad[2 * (l + r) - i]));
     while (0 <= q - k - 1 && p + k + 1 < n && s[q - k - 1] == s[p + k + 1])
       k++;
+    rad[i] = k;
     if (p + k > r) { 
       r = p + k;
       l = q - k;
     }
-    rad[i] = k;
   }
   return rad;
 }
@@ -1096,8 +1096,7 @@ vector<int> manacher(string s) {
 
 <div v-after>
 
-第 8 行，`r <= p` 不能写成 `r < p`。因为当 `r == p` 时 `2 * (l + r)` 可能小于 `i`。例如
-![center](./manacher_3.svg){width=450}
+第 9 行到第 13 行与中心延伸法完全相同。
 </div>
 
 ---
@@ -1110,16 +1109,16 @@ vector<int> manacher(string s) {
   vector<int> rad(2 * n - 1);
   int l = 0, r = 0; // l r 是目前找到的右端点最大的回文子串的左右端点
   for (int i = 0; i < 2 * n - 1; i++) {
+    int k = (2 * r <= i ? 0 : min(r - i / 2, rad[2 * (l + r) - i]));
     int p = i / 2;
     int q = (i + 1) / 2; 
-    int k = (r <= p ? 0 : min(r - p, rad[2 * (l + r) - i]));
     while (0 <= q - k - 1 && p + k + 1 < n && s[q - k - 1] == s[p + k + 1])
       k++;
+    rad[i] = k;
     if (p + k > r) { 
       r = p + k;
       l = q - k;
     }
-    rad[i] = k;
   }
   return rad;
 }
