@@ -1101,7 +1101,7 @@ vector<int> manacher(string s) {
 
 ---
 
-# Manancher 算法的时间复杂度是 O(n)
+# Manacher 算法的时间复杂度是 O(n)
 
 ```cpp
 vector<int> manacher(string s) {
