@@ -438,7 +438,7 @@ $f[i]$：对前 $i$ 个球染色的最大得分。
 
 ---
 
-![center](染色.png)
+![center h:80](染色.png)
 
 <div class=topic topic=子问题>
 
