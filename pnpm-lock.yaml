@@ -45,6 +45,21 @@ importers:
         specifier: ^3.5.25
         version: 3.5.41(typescript@6.0.3)
 
+  lec22:
+    dependencies:
+      '@slidev/cli':
+        specifier: ^52.11.3
+        version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@types/markdown-it@14.1.2)(@types/node@26.2.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(esbuild@0.28.1)(hono@4.13.1)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(postcss@8.5.26)(rolldown@1.2.3)(srvx@0.12.5)(supports-color@10.2.2)
+      '@slidev/theme-default':
+        specifier: latest
+        version: 0.25.0
+      '@slidev/theme-seriph':
+        specifier: latest
+        version: 0.25.0
+      vue:
+        specifier: ^3.5.26
+        version: 3.5.41(typescript@6.0.3)
+
 packages:
 
   '@antfu/install-pkg@1.1.0':
