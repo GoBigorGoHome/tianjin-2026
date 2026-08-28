@@ -135,7 +135,7 @@ $$
 
 ---
 
-# Euclid's lemma
+# 欧几里得引理
 
 <div class=proposition>
 
@@ -660,7 +660,7 @@ void diophantine(long long a, long long b, long long c, long long& x, long long&
 
 <div class=proposition>
 
-设 $a, b, c$ 是整数，$a \ne 0$，$b\ne 0$，$|c| < |a|$ 且 $|c| < |b|$。整数 $x, y$ 使得 $ax + by = c$。那么 `x / b + y / a == 0`。
+设 $a, b, c$ 是整数，$a \ne 0$，$b\ne 0$，$|c| < |a|$ 且 $|c| < |b|$。如果整数 $x, y$ 使得 $ax + by = c$，那么 `x / b + y / a == 0`。
 
 注意：`/` 是 C++ 的除法，向零取整。
 

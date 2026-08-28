@@ -19,16 +19,23 @@ function getLastUpdated(folder, fileName) {
 
 function hasFileChanged(filePath) {
   try {
-    // --name-only: just give the filename
-    // HEAD~1 HEAD: compare previous commit with current
-    const result = execSync(`git diff --name-only HEAD~1 HEAD -- ${filePath}`)
+    // 1. Check for local uncommitted or untracked changes (working directory)
+    const status = execSync(`git status --porcelain -- "${filePath}"`, { stdio: 'pipe' })
       .toString()
       .trim();
-    
-    // If result is not empty, the file changed
-    return result.length > 0;
-  } catch (error) {
-    // If this is the first commit or git fails, assume it changed
+
+    if (status.length > 0) {
+      return true; // Untracked, staged, or modified locally
+    }
+
+    // 2. Check if changed in the last commit (for CI runs)
+    const diff = execSync(`git diff --name-only HEAD~1 HEAD -- "${filePath}"`, { stdio: 'pipe' })
+      .toString()
+      .trim();
+
+    return diff.length > 0;
+  } catch (e) {
+    // If Git command fails (e.g. no commits yet), default to building
     return true; 
   }
 }

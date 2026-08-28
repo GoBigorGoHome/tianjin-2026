@@ -1,9 +1,14 @@
+*
+!*/
+!*.*
+*.exe
+# line 1-4: ignore executable file (no extention file or .exe file)
+*.zip
+*.in
+*.out
+*.autosave.*
 dist/
 tests/
-*.zip
 .wrangler/
 node_modules/
 .cph/
-*.autosave.ipe
-**/题目/*/*
-!**/题目/*/*.*
