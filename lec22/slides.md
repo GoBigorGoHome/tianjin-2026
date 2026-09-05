@@ -39,7 +39,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 <div class=question>
 
-一部字典里 $N$ 个单词。回答 $Q$ 个询问，每个询问给你一个字符串 $s$，
+一部字典里有 $N$ 个单词。回答 $Q$ 个询问，每个询问给你一个字符串 $s$，
 问 $s$ 是不是 $N$ 个单词之一。单词和字符串 $s$ 都只含有小写英文字母。
 </div>
 
@@ -47,7 +47,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 layout: two-cols-header
 ---
 
-有五个单词 a，abc，bac，bbc，ca。
+例：有五个单词 a，abc，bac，bbc，ca。
 
 为了判断一个字符串是不是单词，我们把全部单词组织成一个有根树，称为**字典树**（trie）。
 
@@ -100,6 +100,14 @@ layout: two-cols-header
 
 <div class=question>
 
+十个长度是 5 的两两不同的 01 字符串，它们的字典树最少有多少个节点？最多有多少个节点？
+
+</div>
+
+---
+
+<div class=question>
+
 一百万个长度是 $30$ 的 01 字符串，它们的字典树最多有多少个节点？
 
 </div>
@@ -141,7 +149,38 @@ $$1 + 2 + 2^2 + \dots + 2^{19} + 10^{6}\cdot(30 - 19) = 12048575$$
 ---
 
 ```cpp
-template <int sigma_size, char alpha>
+template <int sigma_size, int (*ctoi)(char)>
+struct Trie {
+  vector<array<int, sigma_size>> go;
+
+  int new_node() {
+    go.push_back({});
+    return go.size() - 1;
+  }
+
+  Trie() {
+    new_node(); //创建根节点
+  }
+
+  int add(string s) {
+    int p = 0;
+    for (char c : s) {
+      int i = ctoi(c);
+      if (go[p][i] == 0) {
+        go[p][i] = new_node();
+      }
+      p = go[p][i];
+    }
+    return p;
+  }
+};
+```
+
+---
+
+```cpp
+// 一个简单的情形：字符集是一段连续的 ASCII 字符。
+template <int sigma_size, char alpha> // alpha 是第一个字符
 struct Trie {
   vector<array<int, sigma_size>> go;
 
